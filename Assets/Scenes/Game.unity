@@ -634,9 +634,11 @@ GameObject:
   - component: {fileID: 695978234}
   - component: {fileID: 695978233}
   - component: {fileID: 695978232}
+  - component: {fileID: 695978239}
+  - component: {fileID: 695978238}
   m_Layer: 0
   m_Name: PlayerOrb
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -778,6 +780,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &695978238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695978231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5862058e0609d4492df563999664d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpellSystem
+  projectilePrefab: {fileID: 3689435461472002990, guid: 1e501401c9474ae44bf8abe2e0bb8fe8, type: 3}
+  projectileSpeed: 14
+  projectileRange: 20
+  projectileDamage: 25
+  fireCooldown: 0.35
+  fireManaCost: 8
+--- !u!95 &695978239
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695978231}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9dc86686f0f69345b8e04538602e7c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
