@@ -42,6 +42,15 @@ public class PauseMenuUI : MonoBehaviour
             else
                 PauseGame();
         }
+        // ТЕСТ — нажми T в игре
+        if (Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            Debug.Log("Пробуем звук...");
+            if (AudioManager.Instance == null)
+                Debug.LogError("AudioManager.Instance = NULL!");
+            else
+                AudioManager.Instance.PlayShoot();
+        }
     }
 
     private void PauseGame()

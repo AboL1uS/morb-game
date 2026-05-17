@@ -26,6 +26,7 @@ public class MainMenuUI : MonoBehaviour
 
         // Запускаем анимацию плавного появления
         StartCoroutine(FadeIn());
+        AudioManager.Instance?.PlayMenuMusic();
     }
 
     private void OnPlayClicked()
@@ -43,13 +44,23 @@ public class MainMenuUI : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        CanvasGroup cg = GetComponentInParent<Canvas>().GetComponent<CanvasGroup>();
+        // Ищем Canvas в сцене напрямую — надёжнее чем GetComponentInParent
+        Canvas canvas = FindFirstObjectByType<Canvas>();
+
+        if (canvas == null)
+        {
+            Debug.LogWarning("MainMenuUI: Canvas не найден в сцене!");
+            yield break;
+        }
+
+        // Получаем или добавляем CanvasGroup на Canvas
+        CanvasGroup cg = canvas.GetComponent<CanvasGroup>();
         if (cg == null)
-            cg = GetComponentInParent<Canvas>().gameObject.AddComponent<CanvasGroup>();
+            cg = canvas.gameObject.AddComponent<CanvasGroup>();
 
         cg.alpha = 0f;
         float elapsed = 0f;
-        float duration = 1.5f;   // секунд на появление
+        float duration = 1.5f;
 
         while (elapsed < duration)
         {

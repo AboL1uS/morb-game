@@ -86,6 +86,7 @@ public class SpellSystem : MonoBehaviour
 
     private void FireProjectile()
     {
+        Debug.Log("AudioManager: " + AudioManager.Instance);
         if (projectilePrefab == null) return;
 
         // Позиция спавна — чуть впереди орба

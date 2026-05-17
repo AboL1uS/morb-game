@@ -200,6 +200,8 @@ public abstract class BaseEnemy : MonoBehaviour
         _agent.ResetPath();
         _agent.enabled = false;
 
+        AudioManager.Instance?.PlayEnemyDie();
+
         Debug.Log(gameObject.name + " уничтожен!");
 
         // Позже: дроп предметов, частицы смерти, очки
