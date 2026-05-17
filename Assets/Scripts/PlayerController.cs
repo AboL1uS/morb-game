@@ -57,27 +57,28 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInput()
     {
-        // Keyboard.current — текущее состояние клавиатуры (новый Input System)
-        // .isPressed — удерживается ли клавиша прямо сейчас
         var kb = Keyboard.current;
-
-        // Если клавиатура недоступна (например, мобильное устройство без неё)
         if (kb == null) return;
 
         float inputX = 0f;
         float inputZ = 0f;
 
-        // Горизонталь: A / D или стрелки влево / вправо
         if (kb.aKey.isPressed || kb.leftArrowKey.isPressed) inputX = -1f;
         if (kb.dKey.isPressed || kb.rightArrowKey.isPressed) inputX = 1f;
-
-        // Вертикаль: W / S или стрелки вверх / вниз
         if (kb.wKey.isPressed || kb.upArrowKey.isPressed) inputZ = 1f;
         if (kb.sKey.isPressed || kb.downArrowKey.isPressed) inputZ = -1f;
 
-        _moveInput = new Vector3(inputX, 0f, inputZ);
+        // Получаем направления относительно камеры
+        CameraFollow cam = Camera.main.GetComponent<CameraFollow>();
+        if (cam != null)
+        {
+            _moveInput = (cam.Forward * inputZ + cam.Right * inputX);
+        }
+        else
+        {
+            _moveInput = new Vector3(inputX, 0f, inputZ);
+        }
 
-        // Нормализация — диагональ не быстрее прямого направления
         if (_moveInput.magnitude > 1f)
             _moveInput = _moveInput.normalized;
     }
